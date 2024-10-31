@@ -1,0 +1,43 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11-e1fc8c682ae6
+Exec   : renumberMesh -noFields -overwrite
+Date   : Oct 31 2024
+Time   : 19:43:49
+Host   : "yokeap-amd"
+PID    : 46669
+I/O    : uncollated
+Case   : /media/yokeap/data/hullopt/prometheus/hull_opt_core8
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Mesh size: 4959440
+Before renumbering :
+    band           : 4863719
+    profile        : 5.18736e+12
+
+Using default renumberMethod.
+
+Selecting renumberMethod CuthillMcKee
+
+
+After renumbering :
+    band           : 73862
+    profile        : 3.05896e+11
+
+Writing mesh to "constant"
+
+End
+

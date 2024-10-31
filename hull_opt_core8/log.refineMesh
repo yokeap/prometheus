@@ -1,0 +1,324 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11-e1fc8c682ae6
+Exec   : refineMesh -dict refineMeshDict -overwrite
+Date   : Oct 31 2024
+Time   : 19:41:10
+Host   : "yokeap-amd"
+PID    : 46610
+I/O    : uncollated
+Case   : /media/yokeap/data/hullopt/prometheus/hull_opt_core8
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Mesh edge statistics:
+    x aligned :  number:286160	minLen:0.504289	maxLen:0.504289
+    y aligned :  number:282948	minLen:0.505003	maxLen:0.505003
+    z aligned :  number:289275	minLen:0.00472135	maxLen:4.32547
+    other     :  number:0	minLen:4.5036e+15	maxLen:-4.5036e+15
+
+Reading "refineMeshDict"
+
+Refining according to "/media/yokeap/data/hullopt/prometheus/hull_opt_core8/system"
+
+Read 61920 cells from cellSet "constant/polyMesh/sets/c1"
+
+Global Coordinate system:
+     e3 : (0 0 1)
+     e1   : (1 0 0)
+     e2   : (0 1 0)
+
+Writing refined cells (247680) to cellSet "constant/polyMesh/sets/refinedCells"
+
+Writing map from new to old cell to "0/polyMesh/cellMap"
+
+Mesh edge statistics:
+    x aligned :  number:478560	minLen:0.252144	maxLen:0.504289
+    y aligned :  number:471708	minLen:0.252501	maxLen:0.505003
+    z aligned :  number:481743	minLen:0.00472135	maxLen:4.32547
+    other     :  number:0	minLen:4.5036e+15	maxLen:-4.5036e+15
+
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11-e1fc8c682ae6
+Exec   : refineMesh -dict refineMeshDict -overwrite
+Date   : Oct 31 2024
+Time   : 19:41:14
+Host   : "yokeap-amd"
+PID    : 46613
+I/O    : uncollated
+Case   : /media/yokeap/data/hullopt/prometheus/hull_opt_core8
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Mesh edge statistics:
+    x aligned :  number:478560	minLen:0.252144	maxLen:0.504289
+    y aligned :  number:471708	minLen:0.252501	maxLen:0.505003
+    z aligned :  number:481743	minLen:0.00472135	maxLen:4.32547
+    other     :  number:0	minLen:4.5036e+15	maxLen:-4.5036e+15
+
+Reading "refineMeshDict"
+
+Refining according to "/media/yokeap/data/hullopt/prometheus/hull_opt_core8/system"
+
+Read 79296 cells from cellSet "constant/polyMesh/sets/c2"
+
+Global Coordinate system:
+     e3 : (0 0 1)
+     e1   : (1 0 0)
+     e2   : (0 1 0)
+
+Writing refined cells (317184) to cellSet "constant/polyMesh/sets/refinedCells"
+
+Writing map from new to old cell to "0/polyMesh/cellMap"
+
+Mesh edge statistics:
+    x aligned :  number:725128	minLen:0.126072	maxLen:0.504289
+    y aligned :  number:713040	minLen:0.126251	maxLen:0.505003
+    z aligned :  number:727655	minLen:0.00472135	maxLen:4.32547
+    other     :  number:0	minLen:4.5036e+15	maxLen:-4.5036e+15
+
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11-e1fc8c682ae6
+Exec   : refineMesh -dict refineMeshDict -overwrite
+Date   : Oct 31 2024
+Time   : 19:41:21
+Host   : "yokeap-amd"
+PID    : 46616
+I/O    : uncollated
+Case   : /media/yokeap/data/hullopt/prometheus/hull_opt_core8
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Mesh edge statistics:
+    x aligned :  number:725128	minLen:0.126072	maxLen:0.504289
+    y aligned :  number:713040	minLen:0.126251	maxLen:0.505003
+    z aligned :  number:727655	minLen:0.00472135	maxLen:4.32547
+    other     :  number:0	minLen:4.5036e+15	maxLen:-4.5036e+15
+
+Reading "refineMeshDict"
+
+Refining according to "/media/yokeap/data/hullopt/prometheus/hull_opt_core8/system"
+
+Read 108576 cells from cellSet "constant/polyMesh/sets/c3"
+
+Global Coordinate system:
+     e3 : (0 0 1)
+     e1   : (1 0 0)
+     e2   : (0 1 0)
+
+Writing refined cells (434304) to cellSet "constant/polyMesh/sets/refinedCells"
+
+Writing map from new to old cell to "0/polyMesh/cellMap"
+
+Mesh edge statistics:
+    x aligned :  number:1063123	minLen:0.0630361	maxLen:0.504289
+    y aligned :  number:1043160	minLen:0.0631254	maxLen:0.505003
+    z aligned :  number:1063679	minLen:0.00472135	maxLen:4.32547
+    other     :  number:0	minLen:4.5036e+15	maxLen:-4.5036e+15
+
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11-e1fc8c682ae6
+Exec   : refineMesh -dict refineMeshDict -overwrite
+Date   : Oct 31 2024
+Time   : 19:41:33
+Host   : "yokeap-amd"
+PID    : 46624
+I/O    : uncollated
+Case   : /media/yokeap/data/hullopt/prometheus/hull_opt_core8
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Mesh edge statistics:
+    x aligned :  number:1063123	minLen:0.0630361	maxLen:0.504289
+    y aligned :  number:1043160	minLen:0.0631254	maxLen:0.505003
+    z aligned :  number:1063679	minLen:0.00472135	maxLen:4.32547
+    other     :  number:0	minLen:4.5036e+15	maxLen:-4.5036e+15
+
+Reading "refineMeshDict"
+
+Refining according to "/media/yokeap/data/hullopt/prometheus/hull_opt_core8/system"
+
+Read 183040 cells from cellSet "constant/polyMesh/sets/c4"
+
+Global Coordinate system:
+     e3 : (0 0 1)
+     e1   : (1 0 0)
+     e2   : (0 1 0)
+
+Writing refined cells (732160) to cellSet "constant/polyMesh/sets/refinedCells"
+
+Writing map from new to old cell to "0/polyMesh/cellMap"
+
+Mesh edge statistics:
+    x aligned :  number:1630690	minLen:0.031518	maxLen:0.504289
+    y aligned :  number:1600440	minLen:0.0315627	maxLen:0.505003
+    z aligned :  number:1625519	minLen:0.00472135	maxLen:4.32547
+    other     :  number:0	minLen:4.5036e+15	maxLen:-4.5036e+15
+
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11-e1fc8c682ae6
+Exec   : refineMesh -dict refineMeshDict -overwrite
+Date   : Oct 31 2024
+Time   : 19:41:52
+Host   : "yokeap-amd"
+PID    : 46627
+I/O    : uncollated
+Case   : /media/yokeap/data/hullopt/prometheus/hull_opt_core8
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Mesh edge statistics:
+    x aligned :  number:1630690	minLen:0.031518	maxLen:0.504289
+    y aligned :  number:1600440	minLen:0.0315627	maxLen:0.505003
+    z aligned :  number:1625519	minLen:0.00472135	maxLen:4.32547
+    other     :  number:0	minLen:4.5036e+15	maxLen:-4.5036e+15
+
+Reading "refineMeshDict"
+
+Refining according to "/media/yokeap/data/hullopt/prometheus/hull_opt_core8/system"
+
+Read 289408 cells from cellSet "constant/polyMesh/sets/c5"
+
+Global Coordinate system:
+     e3 : (0 0 1)
+     e1   : (1 0 0)
+     e2   : (0 1 0)
+
+Writing refined cells (1157632) to cellSet "constant/polyMesh/sets/refinedCells"
+
+Writing map from new to old cell to "0/polyMesh/cellMap"
+
+Mesh edge statistics:
+    x aligned :  number:2527950	minLen:0.015759	maxLen:0.504289
+    y aligned :  number:2483465	minLen:0.0157813	maxLen:0.505003
+    z aligned :  number:2510191	minLen:0.00472135	maxLen:4.32547
+    other     :  number:0	minLen:4.5036e+15	maxLen:-4.5036e+15
+
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11-e1fc8c682ae6
+Exec   : refineMesh -dict refineMeshDict -overwrite
+Date   : Oct 31 2024
+Time   : 19:42:23
+Host   : "yokeap-amd"
+PID    : 46655
+I/O    : uncollated
+Case   : /media/yokeap/data/hullopt/prometheus/hull_opt_core8
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Mesh edge statistics:
+    x aligned :  number:2527950	minLen:0.015759	maxLen:0.504289
+    y aligned :  number:2483465	minLen:0.0157813	maxLen:0.505003
+    z aligned :  number:2510191	minLen:0.00472135	maxLen:4.32547
+    other     :  number:0	minLen:4.5036e+15	maxLen:-4.5036e+15
+
+Reading "refineMeshDict"
+
+Refining according to "/media/yokeap/data/hullopt/prometheus/hull_opt_core8/system"
+
+Read 838880 cells from cellSet "constant/polyMesh/sets/c6"
+
+Global Coordinate system:
+     e3 : (0 0 1)
+     e1   : (1 0 0)
+     e2   : (0 1 0)
+
+Writing refined cells (3355520) to cellSet "constant/polyMesh/sets/refinedCells"
+
+Writing map from new to old cell to "0/polyMesh/cellMap"
+
+Mesh edge statistics:
+    x aligned :  number:5113926	minLen:0.00787951	maxLen:0.504289
+    y aligned :  number:5047040	minLen:0.00789067	maxLen:0.505003
+    z aligned :  number:5052759	minLen:0.00472135	maxLen:4.32547
+    other     :  number:0	minLen:4.5036e+15	maxLen:-4.5036e+15
+
+End
+

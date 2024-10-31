@@ -1,0 +1,120 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11-e1fc8c682ae6
+Exec   : blockMesh
+Date   : Oct 31 2024
+Time   : 19:41:09
+Host   : "yokeap-amd"
+PID    : 46604
+I/O    : uncollated
+Case   : /media/yokeap/data/hullopt/prometheus/hull_opt_core8
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Deleting polyMesh directory
+    "/media/yokeap/data/hullopt/prometheus/hull_opt_core8/constant/polyMesh"
+Reading "blockMeshDict"
+
+Creating block mesh from
+    "system/blockMeshDict"
+No non-linear block edges defined
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+--> FOAM Warning : 
+    From function void Foam::blockMesh::defaultPatchError(const Foam::word&, const Foam::dictionary&) const
+    in file blockMesh/blockMeshTopology.C at line 349
+    Reading "/media/yokeap/data/hullopt/prometheus/hull_opt_core8/system/blockMeshDict" from line 15 to line 219
+    The 'defaultPatch' type must be specified for the 'defaultFaces' patch, e.g. for snappyHexMesh
+
+    defaultPatch
+    {
+        name default; // optional
+        type patch;
+    }
+
+or for 2D meshes
+
+    defaultPatch
+    {
+        name frontAndBack; // optional
+        type empty;
+    }
+
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 5
+		Number of boundary faces : 26
+		Number of defined boundary faces : 26
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 1
+    Block 0 cell size :
+        i : 0.504289 .. 0.504289
+        j : 0.505003
+        k : 4.32547 .. 0.216274
+    Block 1 cell size :
+        i : 0.504289 .. 0.504289
+        j : 0.505003
+        k : 0.51509
+    Block 2 cell size :
+        i : 0.504289 .. 0.504289
+        j : 0.505003
+        k : 0.0264903 .. 0.0264903
+    Block 3 cell size :
+        i : 0.504289 .. 0.504289
+        j : 0.505003
+        k : 0.00472135
+    Block 4 cell size :
+        i : 0.504289 .. 0.504289
+        j : 0.505003
+        k : 0.0509137 .. 0.0509137
+    Block 5 cell size :
+        i : 0.504289 .. 0.504289
+        j : 0.505003
+        k : 0.111815 .. 0.559073
+
+There are no merge patch pairs edges
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (-15.689 -8.58505 -17.1697) (12.5512 8.58505 4.57858)
+  nPoints: 291270
+  nCells: 276080
+  nFaces: 843194
+  nInternalFaces: 813286
+----------------
+Patches
+----------------
+  patch 0 (start: 813286 size: 1904) name: atmosphere
+  patch 1 (start: 815190 size: 4930) name: inlet
+  patch 2 (start: 820120 size: 4930) name: outlet
+  patch 3 (start: 825050 size: 1904) name: bottom
+  patch 4 (start: 826954 size: 8120) name: side
+  patch 5 (start: 835074 size: 8120) name: defaultFaces
+
+End
+

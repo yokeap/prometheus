@@ -1,0 +1,48 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11-e1fc8c682ae6
+Exec   : snappyHexMesh -overwrite
+Date   : Oct 31 2024
+Time   : 19:43:46
+Host   : "yokeap-amd"
+PID    : 46668
+I/O    : uncollated
+Case   : /media/yokeap/data/hullopt/prometheus/hull_opt_core8
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Read mesh in = 2.09394 s
+
+
+--> FOAM FATAL ERROR: 
+Mesh provided is not fully 3D as required for mesh relaxation after snapping
+Convert all empty patches to appropriate types for a 3D mesh, current patch types are
+
+6
+(
+patch
+patch
+patch
+symmetryPlane
+symmetryPlane
+empty
+)
+
+
+    From function snappyHexMesh
+    in file snappyHexMesh.C at line 706.
+
+FOAM exiting
+
