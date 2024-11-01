@@ -46,4 +46,18 @@ timePrecision   6;
 
 runTimeModifiable yes;
 
+functions
+{
+    forces
+    {
+        type            forces;
+        libs            ("libforces.so");
+        patches         (hull);
+        log             on;
+        writeControl    timeStep;
+        writeInterval   1;
+        CofR            (2.830205329058419 4.490321927098085e-08 0.31810309088071);
+    }
+}
+
 // ************************************************************************* //

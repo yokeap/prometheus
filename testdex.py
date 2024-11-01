@@ -72,40 +72,51 @@ def computational_domain(problemdict):
     #
     DomainSizeXFront = float(problemdict['DomainSizeXFront'])
     DomainSizeXBack = float(problemdict['DomainSizeXBack'])
-    xmin = -xlength*DomainSizeXBack
-    xmax = xlength*DomainSizeXFront
+    xmin = round(-xlength*DomainSizeXBack, 3)
+    xmax = round(xlength*DomainSizeXFront, 3)
     #
     DomainSizeYLeft= float(problemdict['DomainSizeYLeft'])
     DomainSizeYRight = float(problemdict['DomainSizeYRight'])
-    ymin = -ylength*DomainSizeYRight
-    ymax = ylength*DomainSizeYLeft
+    ymin = round(-ylength*DomainSizeYRight, 3)
+    # ymax = ylength*DomainSizeYLeft
+    ymax = 0.0
     #
     DomainSizeZTop = float(problemdict['DomainSizeZTop'])
     DomainSizeZBot = float(problemdict['DomainSizeZBottom'])
-    zmin = -zlength*DomainSizeZBot * 2.0
-    zmax = (zlength*DomainSizeZTop) * 2.0
-    zmid1 = zmin * 0.3
-    zmid2 = zmin * 0.06
-    zmid3 = zmin * 0.006
-    zmid4 = 0.1
-    zmid5 = zmax/2.0
+    zmin = round(-zlength*DomainSizeZBot * 1.0, 3)
+    zmax = round((zlength*DomainSizeZTop) * 1.5, 3)
+    zmid5 = round(zmax/1.7, 3)
+    zmid4 = round(0.3, 3)
+    # zmid3 = round(zmax / 10.0, 3)
+    zmid3 = round(zmid4 - 0.056, 3)
+    # zmid2 = round(zmid3 - 0.05, 3)
+    zmid2 = round(zmid3 - 0.056, 3)
+    zmid1 = round(-1.0, 3)
 
     # set up domain grid
     nxgrid = int((xmax-xmin)/float(problemdict['cellSizeX']))
-    nygrid = int((ymax-ymin)/float(problemdict['cellSizeY']))
+    # nygrid = int((ymax-ymin)/float(problemdict['cellSizeY']))
+    nygrid =  int(abs(ymin))
     nzgrid = int((zmax-zmin)/float(problemdict['cellSizeZ']))
-    nzgrid1 = int(nzgrid * 0.2)
-    nzgrid2 = int(nzgrid / 5.0)
-    nzgrid3 = int(nzgrid/1.2)
-    nzgrid4 = nzgrid
-    nzgrid5 = nzgrid
-    nzgrid6 = int(nzgrid / 5.0)
+    # nzgrid1 = int(nzgrid * 0.2)
+    # nzgrid2 = int(nzgrid / 5.0)
+    nzgrid1 = nzgrid
+    nzgrid2 = nzgrid
+    # nzgrid3 = int(nzgrid/1.2)
+    nzgrid3 = int(nzgrid * 0.8 * 0.1)
+    # nzgrid4 = nzgrid
+    nzgrid4 = nzgrid3
+    # nzgrid5 = nzgrid
+    nzgrid5 = int(nzgrid * 0.8)
+    # nzgrid6 = int(nzgrid / 5.0)
+    nzgrid6 = int(nzgrid * 0.4)
     #
     #note siwakorn (xmin-0.7 0 0)
     # xlocinside = xmax - 0.01*(xmax-xmin)
     # ylocinside = ymax - 0.01*(ymax-ymin)
     # zlocinside = zmax - 0.01*(zmax-zmin)
-    xlocinside = xmin-0.7
+    # xlocinside = xmin-0.7
+    xlocinside = -0.7
     ylocinside = 0
     zlocinside = 0
 
@@ -113,7 +124,7 @@ def computational_domain(problemdict):
             'ymin':ymin,'ymax':ymax,'zmin':zmin,'zmax':zmax,
             'zmid1':zmid1, 'zmid2':zmid2, 'zmid3':zmid3, 'zmid4':zmid4, 'zmid5':zmid5,
             'nxgrid':nxgrid,'nygrid':nygrid,'nzgrid':nzgrid,
-            'nzgrid1':nzgrid1, 'nzgrid2':nzgrid2, 'nzgrid3':nzgrid3, 'nzgrid4':nzgrid5, 'nzgrid5':nzgrid5, 'nzgrid6':nzgrid6,
+            'nzgrid1':nzgrid1, 'nzgrid2':nzgrid2, 'nzgrid3':nzgrid3, 'nzgrid4':nzgrid4, 'nzgrid5':nzgrid5, 'nzgrid6':nzgrid6,
             'xlocinside':xlocinside,'ylocinside':ylocinside,'zlocinside':zlocinside}
 
 def stlPrep(configdict):
@@ -176,7 +187,7 @@ def setup_of(problemdict):
     os.system(stlmovecmd)
     # First copy the STL File in the right place
     templatesdict={'system/blockMeshDict_templ.txt': 'system/blockMeshDict','system/decomposeParDict_templ.txt': 'system/decomposeParDict',
-    'system/snappyHexMeshDict_templ.txt':'system/snappyHexMeshDict', 'system/functions_templ.txt':'system/functions',
+    'system/snappyHexMeshDict_templ.txt':'system/snappyHexMeshDict', 'system/setFieldsDict_templ.txt':'system/setFieldsDict',
                    'system/controlDict_templ.txt':'system/controlDict'}
     for key in templatesdict:
         kajiki_it(casefolder+"/"+key,casefolder+"/"+templatesdict[key],problemdict)

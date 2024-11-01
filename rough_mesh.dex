@@ -25,8 +25,8 @@ maxiter,input,discrete,500
 ***
 *** Geometry Details
 ***
-infile,input,string,hull.stl
-outfile,input,string,hull.stl
+infile,input,string,ship.stl
+outfile,input,string,ship.stl
 aoa,input,continuous,1.0
 **aref_drag,input,continuous,1
 **aref_lift,input,continuous,1
@@ -61,18 +61,18 @@ density,input,continous,1027.0
 DomainSizeXFront,input,continuous,2
 DomainSizeXBack,input,continuous,2.5
 DomainSizeYLeft,input,continuous,10
-DomainSizeYRight,input,continuous,10
+DomainSizeYRight,input,continuous,15
 DomainSizeZTop,input,continuous,4
 DomainSizeZBottom,input,continuous,15
 ** Block mesh will create domain/cellSize? cells in tha ? direction
-cellSizeX,input,continuous,0.5
+cellSizeX,input,continuous,0.7
 cellSizeY,input,continuous,0.5
-cellSizeZ,input,continuous,0.5
+cellSizeZ,input,continuous,0.3
 ***
 *** SNAPPY HEX MESH REFINEMENT
 ***
 maxLocalCells,input,discrete,10000
-maxGlobalCells,input,discrete,1000000
+maxGlobalCells,input,discrete,500000
 nsurfacelayers,input,discrete,3
 **this defines the minimum and maximum cell refinement on the model surface --> refinement level (n m)
 **results in a maximum cell size of cellSize/2^n and a minimum cell size of cellSize/2^m on the

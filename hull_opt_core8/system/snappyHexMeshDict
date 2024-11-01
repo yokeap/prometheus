@@ -30,7 +30,7 @@ geometry
     hull
     {
         type triSurfaceMesh;
-        file "hull.stl";
+        file "ship.stl";
 
         patchInfo
         {
@@ -57,7 +57,7 @@ castellatedMeshControls
     // Note that this is the number of cells before removing the part which
     // is not 'visible' from the keepPoint. The final number of cells might
     // actually be a lot less.
-    maxGlobalCells 1000000;
+    maxGlobalCells 500000;
 
     // The surface refinement loop might spend lots of iterations refining just
     // a few cells. This setting will cause refinement to stop if <=
@@ -80,7 +80,7 @@ castellatedMeshControls
     features
 	(
 		{
-			file "hull.eMesh";
+			file "ship.eMesh";
 			level 0;
 		}
 	);
@@ -98,7 +98,7 @@ castellatedMeshControls
 
     refinementSurfaces
     {
-        huull
+        hull
         {
             // Surface-wise min and max refinement level
             //level (4 6);
@@ -141,8 +141,8 @@ castellatedMeshControls
     // section reachable from the locationInMesh is kept.
     // NOTE: This point should never be on a face, always inside a cell, even
     // after refinement.
-    // locationInMesh (-16.388984394073486 0 0);
-    insidePoint (-16.388984394073486 0 0);
+    // locationInMesh (-0.7 0 0);
+    insidePoint (-0.7 0 0);
 
 
     // Whether any faceZones (as specified in the refinementSurfaces)
@@ -218,11 +218,11 @@ addLayersControls
 
     // When not to extrude surface. 0 is flat surface, 90 is when two faces
     // are perpendicular
-    featureAngle 100;
+    featureAngle 60;
 
     // At non-patched sides allow mesh to slip if extrusion direction makes
     // angle larger than slipFeatureAngle. Default is 0.5*featureAngle.
-    slipFeatureAngle 30;
+    // slipFeatureAngle 30;
 
     // Maximum number of snapping relaxation iterations. Should stop
     // before upon reaching a correct mesh.

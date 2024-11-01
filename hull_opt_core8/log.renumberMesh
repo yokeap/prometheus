@@ -7,12 +7,12 @@
 \*---------------------------------------------------------------------------*/
 Build  : 11-e1fc8c682ae6
 Exec   : renumberMesh -noFields -overwrite
-Date   : Oct 31 2024
-Time   : 19:43:49
+Date   : Nov 01 2024
+Time   : 16:58:50
 Host   : "yokeap-amd"
-PID    : 46669
+PID    : 20041
 I/O    : uncollated
-Case   : /media/yokeap/data/hullopt/prometheus/hull_opt_core8
+Case   : /media/yokeap/data/git/prometheus/hull_opt_core8
 nProcs : 1
 sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
 fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
@@ -23,10 +23,10 @@ Create time
 
 Create mesh for time = 0
 
-Mesh size: 4959440
+Mesh size: 762279
 Before renumbering :
-    band           : 4863719
-    profile        : 5.18736e+12
+    band           : 549487
+    profile        : 6.91416e+10
 
 Using default renumberMethod.
 
@@ -34,10 +34,12 @@ Selecting renumberMethod CuthillMcKee
 
 
 After renumbering :
-    band           : 73862
-    profile        : 3.05896e+11
+    band           : 24214
+    profile        : 9.34851e+09
 
 Writing mesh to "constant"
 
+Renumbering faceSets:
+    wrongFaces
 End
 

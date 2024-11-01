@@ -7,12 +7,12 @@
 \*---------------------------------------------------------------------------*/
 Build  : 11-e1fc8c682ae6
 Exec   : surfaceFeatures
-Date   : Oct 31 2024
-Time   : 19:41:09
+Date   : Nov 01 2024
+Time   : 16:46:41
 Host   : "yokeap-amd"
-PID    : 46603
+PID    : 19875
 I/O    : uncollated
-Case   : /media/yokeap/data/hullopt/prometheus/hull_opt_core8
+Case   : /media/yokeap/data/git/prometheus/hull_opt_core8
 nProcs : 1
 sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
 fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
@@ -23,7 +23,7 @@ Create time
 
 Reading "surfaceFeaturesDict"
 
-Surface            : "hull.stl"
+Surface            : "ship.stl"
 
 
 Feature line extraction is only valid on closed manifold surfaces.
@@ -61,11 +61,11 @@ edge classification :
     open edges                     :        0
     multiply connected edges       :        0
 
-Writing extendedFeatureEdgeMesh to "constant/extendedFeatureEdgeMesh/hull.extendedFeatureEdgeMesh"
+Writing extendedFeatureEdgeMesh to "constant/extendedFeatureEdgeMesh/ship.extendedFeatureEdgeMesh"
 
-Writing featureEdgeMesh to "constant/geometry/hull.eMesh"
+Writing featureEdgeMesh to "constant/geometry/ship.eMesh"
 
-ExecutionTime = 0.320635 s  ClockTime = 0 s
+ExecutionTime = 0.316148 s  ClockTime = 0 s
 
 End
 
