@@ -1,0 +1,330 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11-e1fc8c682ae6
+Exec   : topoSet
+Date   : Nov 01 2024
+Time   : 16:46:41
+Host   : "yokeap-amd"
+PID    : 19878
+I/O    : uncollated
+Case   : /media/yokeap/data/git/prometheus/hull_opt_core8
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Reading "topoSetDict"
+
+Time = 0s
+    mesh not changed.
+Created cellSet c1
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-10 -6 -3) (10 0 3))
+    cellSet c1 now size 19320
+Created cellSet c2
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-5 -3 -2.5) (9 0 2))
+    cellSet c2 now size 5940
+Created cellSet c3
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-3 -1.5 -1) (8 0 1.5))
+    cellSet c3 now size 1088
+Created cellSet c4
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-2 -1 -0.6) (7 0 1))
+    cellSet c4 now size 598
+Created cellSet c5
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-1 -0.6 -0.3) (6.5 0 0.8))
+    cellSet c5 now size 310
+Created cellSet c6
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-0.5 -0.55 -0.15) (6.25 0 0.65))
+    cellSet c6 now size 216
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11-e1fc8c682ae6
+Exec   : topoSet
+Date   : Nov 01 2024
+Time   : 16:46:43
+Host   : "yokeap-amd"
+PID    : 19881
+I/O    : uncollated
+Case   : /media/yokeap/data/git/prometheus/hull_opt_core8
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Reading "topoSetDict"
+
+Time = 0s
+    mesh not changed.
+Created cellSet c1
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-10 -6 -3) (10 0 3))
+    cellSet c1 now size 70840
+Created cellSet c2
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-5 -3 -2.5) (9 0 2))
+    cellSet c2 now size 23760
+Created cellSet c3
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-3 -1.5 -1) (8 0 1.5))
+    cellSet c3 now size 6324
+Created cellSet c4
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-2 -1 -0.6) (7 0 1))
+    cellSet c4 now size 2300
+Created cellSet c5
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-1 -0.6 -0.3) (6.5 0 0.8))
+    cellSet c5 now size 651
+Created cellSet c6
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-0.5 -0.55 -0.15) (6.25 0 0.65))
+    cellSet c6 now size 456
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11-e1fc8c682ae6
+Exec   : topoSet
+Date   : Nov 01 2024
+Time   : 16:46:45
+Host   : "yokeap-amd"
+PID    : 19884
+I/O    : uncollated
+Case   : /media/yokeap/data/git/prometheus/hull_opt_core8
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Reading "topoSetDict"
+
+Time = 0s
+    mesh not changed.
+Created cellSet c1
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-10 -6 -3) (10 0 3))
+    cellSet c1 now size 142120
+Created cellSet c2
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-5 -3 -2.5) (9 0 2))
+    cellSet c2 now size 86031
+Created cellSet c3
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-3 -1.5 -1) (8 0 1.5))
+    cellSet c3 now size 25296
+Created cellSet c4
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-2 -1 -0.6) (7 0 1))
+    cellSet c4 now size 9384
+Created cellSet c5
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-1 -0.6 -0.3) (6.5 0 0.8))
+    cellSet c5 now size 2666
+Created cellSet c6
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-0.5 -0.55 -0.15) (6.25 0 0.65))
+    cellSet c6 now size 1824
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11-e1fc8c682ae6
+Exec   : topoSet
+Date   : Nov 01 2024
+Time   : 16:46:47
+Host   : "yokeap-amd"
+PID    : 19887
+I/O    : uncollated
+Case   : /media/yokeap/data/git/prometheus/hull_opt_core8
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Reading "topoSetDict"
+
+Time = 0s
+    mesh not changed.
+Created cellSet c1
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-10 -6 -3) (10 0 3))
+    cellSet c1 now size 218008
+Created cellSet c2
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-5 -3 -2.5) (9 0 2))
+    cellSet c2 now size 161919
+Created cellSet c3
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-3 -1.5 -1) (8 0 1.5))
+    cellSet c3 now size 92752
+Created cellSet c4
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-2 -1 -0.6) (7 0 1))
+    cellSet c4 now size 32844
+Created cellSet c5
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-1 -0.6 -0.3) (6.5 0 0.8))
+    cellSet c5 now size 10540
+Created cellSet c6
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-0.5 -0.55 -0.15) (6.25 0 0.65))
+    cellSet c6 now size 7392
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11-e1fc8c682ae6
+Exec   : topoSet
+Date   : Nov 01 2024
+Time   : 16:46:51
+Host   : "yokeap-amd"
+PID    : 19890
+I/O    : uncollated
+Case   : /media/yokeap/data/git/prometheus/hull_opt_core8
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Reading "topoSetDict"
+
+Time = 0s
+    mesh not changed.
+Created cellSet c1
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-10 -6 -3) (10 0 3))
+    cellSet c1 now size 316540
+Created cellSet c2
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-5 -3 -2.5) (9 0 2))
+    cellSet c2 now size 260451
+Created cellSet c3
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-3 -1.5 -1) (8 0 1.5))
+    cellSet c3 now size 191284
+Created cellSet c4
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-2 -1 -0.6) (7 0 1))
+    cellSet c4 now size 131376
+Created cellSet c5
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-1 -0.6 -0.3) (6.5 0 0.8))
+    cellSet c5 now size 47430
+Created cellSet c6
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-0.5 -0.55 -0.15) (6.25 0 0.65))
+    cellSet c6 now size 29376
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11-e1fc8c682ae6
+Exec   : topoSet
+Date   : Nov 01 2024
+Time   : 16:46:56
+Host   : "yokeap-amd"
+PID    : 19893
+I/O    : uncollated
+Case   : /media/yokeap/data/git/prometheus/hull_opt_core8
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Reading "topoSetDict"
+
+Time = 0s
+    mesh not changed.
+Created cellSet c1
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-10 -6 -3) (10 0 3))
+    cellSet c1 now size 458830
+Created cellSet c2
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-5 -3 -2.5) (9 0 2))
+    cellSet c2 now size 402741
+Created cellSet c3
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-3 -1.5 -1) (8 0 1.5))
+    cellSet c3 now size 333574
+Created cellSet c4
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-2 -1 -0.6) (7 0 1))
+    cellSet c4 now size 273666
+Created cellSet c5
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-1 -0.6 -0.3) (6.5 0 0.8))
+    cellSet c5 now size 189720
+Created cellSet c6
+    Applying source boxToCell
+    Adding cells with center within boxes 1((-0.5 -0.55 -0.15) (6.25 0 0.65))
+    cellSet c6 now size 117504
+End
+

@@ -1,0 +1,71 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11-e1fc8c682ae6
+Exec   : surfaceFeatures
+Date   : Nov 01 2024
+Time   : 16:46:41
+Host   : "yokeap-amd"
+PID    : 19875
+I/O    : uncollated
+Case   : /media/yokeap/data/git/prometheus/hull_opt_core8
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Reading "surfaceFeaturesDict"
+
+Surface            : "ship.stl"
+
+
+Feature line extraction is only valid on closed manifold surfaces.
+Statistics:
+Triangles    : 116062
+Vertices     : 58033
+Bounding Box : (-0.113504 -0.429253 -2.51549e-11) (6.16209 0.429252 0.572322)
+
+
+Constructing feature set from included angle 150
+Selecting edges purely based on geometric tests: no
+
+Initial feature set:
+    feature points : 3
+    feature edges  : 911
+    of which
+        region edges   : 0
+        external edges : 909
+        internal edges : 2
+
+
+Final feature set:
+points      : 927
+edges       : 911
+boundingBox : (-0.113503 -0.429241 0) (6.16209 0.429241 0.572322)
+point classification :
+    convex feature points          :        2
+    concave feature points         :        0
+    mixed feature points           :        1
+    other (non-feature) points     :      924
+edge classification :
+    external (convex angle) edges  :      909
+    internal (concave angle) edges :        2
+    flat region edges              :        0
+    open edges                     :        0
+    multiply connected edges       :        0
+
+Writing extendedFeatureEdgeMesh to "constant/extendedFeatureEdgeMesh/ship.extendedFeatureEdgeMesh"
+
+Writing featureEdgeMesh to "constant/geometry/ship.eMesh"
+
+ExecutionTime = 0.316148 s  ClockTime = 0 s
+
+End
+
