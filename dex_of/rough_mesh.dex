@@ -16,7 +16,7 @@
 *** RUN CONTROL PARAMETERS
 ***
 ***
-casefoldername,input,string,hull_opt_core8
+casefoldername,input,string,hull_opt
 runopenfoam,input,string,yes
 backgroundof,input,string,no
 kOmegaTol,input,continuous,1e-7

@@ -17,7 +17,7 @@ data_file_name='./data/optim_run.csv'
 path_stl = '../cad_gen/stl/'
 base_dexfile='rough_mesh_8cores.dex'
 result_folder='./result_logs'
-case_folder_name = 'hull_opt_core8'
+case_folder_name = 'hull_opt'
 stl_name = 'ship'
 
 # not sure, i think it is max value of resistance
@@ -34,37 +34,59 @@ def run_dex(mesh=0.1):
     input_stl_file+=stl_name + ".stl"
     print('full path of stl file:',input_stl_file)
 
+    arg_.append("./rough_mesh.dex")
+    arg_.append("./ship.stl")
+
+    print(arg_)
+
     # run run_of.sh
-    # subprocess.call(arg_)
+    subprocess.call(arg_)
 
     try:
-        src_resultfile='./'+ case_folder_name +'/log.foamRun'
+        # src_resultfile='./'+ case_folder_name +'/results.log'
+        
+        # with open(src_resultfile, 'r') as f:
+        #     result_output=f.read()
+
+        # pressure_x_found = re.findall(r"pressure\s+:\s*\([-+]?\s*\d*\.\d*",result_output)
+        # viscous_x_found = re.findall(r"viscous\s+:\s*\([-+]?\s*\d*\.\d*",result_output)
+
+        # if pressure_x_found[-2] and viscous_x_found[-2]:
+        #     resistance = 2*(-float(pressure_x_found[-2].split(': (')[1])  + (-float(viscous_x_found[-2].split(': (')[1])))
+        # else:
+        #     resistance = default_max
+        # if pressure_x_found[-2]: 
+        #     pressure_x = pressure_x_found[-2].split(': (')[1]
+        #     pressure_x= float(pressure_x) * -2
+        # else: 
+        #     pressure_x_found = default_max
+        # if viscous_x_found[-2]:
+        #     viscous_x = viscous_x_found[-2].split(': (')[1]
+        #     viscous_x = float(viscous_x) * -2
+        # else: 
+        #     viscous_x = default_max 
+
+        # print("######################################") 
+        # print("######################################")  
+        # print('Pressure is:', pressure_x)
+        # print('Viscous is:', viscous_x)
+        # print('Resistance is:', resistance)
+        # print("######################################")
+
+        src_resultfile='./'+ case_folder_name +'/results.log'
         
         with open(src_resultfile, 'r') as f:
             result_output=f.read()
 
-        pressure_x = re.findall(r"pressure\s+:\s*\(\-s*\d*\.\d*",result_output)
-        viscous_x = re.findall(r"viscous\s+:\s*\(\-s*\d*\.\d*",result_output)
+        resistance_found = re.findall(r"resistance:\s*([-+]?\d*\.?\d+)",result_output)
 
-        if pressure_x[-2] and viscous_x[-2]:
-            resistance = 2*(float(pressure_x[-2].split(': (')[1]) - float(viscous_x[-2].split(': (')[1]))
+        if resistance_found:
+            resistance = resistance_found[-1]
         else:
             resistance = default_max
-        if pressure_x[-2]: 
-            pressure_x_found = pressure_x[-2].split(': (')[1]
-            pressure_x_found= float(pressure_x_found) * -2
-        else: 
-            pressure_x_found = default_max
-        if viscous_x[-2]:
-            viscous_x_found = viscous_x[-2].split(': (')[1]
-            viscous_x_found = float(viscous_x_found) * -2
-        else: 
-            viscous_x_found = default_max 
 
         print("######################################") 
         print("######################################")  
-        print('Pressure is:', pressure_x_found)
-        print('Viscous is:', viscous_x_found)
         print('Resistance is:', resistance)
         print("######################################")
 

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-echo "USAGE: run_of.sh dexfile stlfile aoa "
+echo "USAGE: run_of.sh dexfile stlfile"
 if [ -z "$1" ]
   then
     echo "No dex file is not supplied"
     exit 1
-fi
+  fi
 
 if [[ $1 != *.dex ]]
     then
@@ -16,7 +16,7 @@ if [ -z "$2" ]
   then
     echo " STL file is required "
     exit 2
-fi
+  fi
 
 if [[ $2 != *.stl ]]
     then
@@ -24,40 +24,79 @@ if [[ $2 != *.stl ]]
         exit 2
     fi
 
-if [ -z "$3" ]
-  then
-    echo " AOA is required "
-    exit 2
-fi
+# if [ -z "$3" ]
+#   then
+#     echo " AOA is required "
+#     exit 2
+# fi
 
-fname=`echo "$1" | cut -d'.' -f1`
 
-echo $fname
-
-echo "*** Preprocessing *** "
-python /home/aimed_user/dex_of/dex_of.py  $1 --infile $2 --aoa $3 --casefoldername dir_${fname}_aoa_$3
-cd dir_${fname}_aoa_$3
+echo "*** Preprocessing *** "s
+# python3 ./dex_of.py $1 --infile $2 
+cd ./hull_opt
+pwd
 echo "*** Cleaning and Running OF ***"
-./Allclean; ./Allrun &> dir_${fname}_aoa_$3.log
+# ./Allclean; ./Allrun &> hull_opt.log
+tail -100 postProcessing/forces/0/forces.dat | awk -F "[( )]+" '{print $1, -2*$3, -2*$6, 2*(-$3-$6)}' > forces_hull.dat
 echo "*** PostProcessing ***"
 echo "*** Results ***" >> results.log
-echo " ----- LIFT AND DRAG FORCES ---- " >> results.log
-tail -13 log.simpleFoam |head -8 >> results.log
-echo " ----- LIFT AND DRAG COEFFICIENTS ---- " >> results.log
-tail -50 log.simpleFoam | grep "Cd       :" |tail -1 >> results.log
-tail -50 log.simpleFoam | grep "Cl       :" |head -1 >> results.log
-tail -50 log.simpleFoam | grep "Cs       :" |head -1 >> results.log
-echo "___ REFERENCE AREAS ----" >> results.log
-echo "Arefs" >> results.log
-find ./postProcessing -name "coefficient.dat" -exec grep -H Aref {} \; >> results.log
-echo "lrefs:" >> results.log
-find ./postProcessing -name "coefficient.dat" -exec grep -H lRef {} \; >> results.log
-echo "----- MESH DENSITIES & CPU TIMES ----- "
-grep -H ells  dir_${fname}_aoa_$3.log  >> results.log
-grep -H "Finished meshing in"  log.snappyHexMesh >> results.log
-echo " Converged In:"
-grep "Time =" log.simpleFoam | tail -2 >> results.log
-echo "Results stored in dir_${fname}_aoa_$3/results.log"
-cat ./results.log
-cd ..
+tail -50 log.foamRun | grep "forces forces write:" -A 8  >> results.log
+
+# Filename for input
+FORCES_FILE="forces_hull.dat"
+
+# Check if forces.dat file exists
+if [ ! -f "$FORCES_FILE" ]; then
+    echo "Error: $FORCES_FILE not found!"
+    exit 1
+fi
+
+# Initialize variables
+total_resistance_sum=0
+total_pressure_sum=0
+total_viscous_sum=0
+num_steps=0
+
+# Read forces.dat line by line, skipping comment lines
+while read -r line; do
+    # Skip comments or header lines
+    if [[ $line == \#* ]]; then
+        continue
+    fi
+
+    # Read columns from forces.dat
+    # the file format: time  Fx_pressure Fx_viscous Resistance  (that's double times for full hull)
+    time=$(echo $line | awk '{print $1}')
+    Fx_pressure=$(echo $line | awk '{print $2}')
+    Fx_viscous=$(echo $line | awk '{print $3}')
+
+    # Calculate total resistance at this time step
+    total_resistance=$(echo "$Fx_pressure + $Fx_viscous" | bc -l)
+
+    # Accumulate total resistance for averaging
+    total_pressure_sum=$(echo "$total_pressure_sum + $Fx_pressure" | bc -l)
+    total_viscous_sum=$(echo "$total_viscous_sum  + $Fx_viscous" | bc -l)
+    total_resistance_sum=$(echo "$total_resistance_sum + $total_resistance" | bc -l)
+    num_steps=$((num_steps + 1))
+
+done < "$FORCES_FILE"
+
+# Compute average resistance
+if [ $num_steps -eq 0 ]; then
+    echo "Error: No data found in $FORCES_FILE"
+    exit 1
+fi
+
+average_total_pressure=$(echo "$total_pressure_sum / $num_steps" | bc -l)
+average_total_viscous=$(echo "$total_viscous_sum / $num_steps" | bc -l)
+average_total_resistance=$(echo "$total_resistance_sum / $num_steps" | bc -l)
+
+# Output the average total resistance
+echo "Average total: " >> results.log
+echo "      pressure: $average_total_pressure" >> results.log
+echo "      viscous: $average_total_viscous" >> results.log
+echo "      resistance: $average_total_resistance" >> results.log
+# echo "Average total resistance: $average_total_resistance N"
+# echo "Average total resistance: $average_total_resistance N"
+
 echo "*** ALL DONE ***"

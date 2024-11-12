@@ -206,6 +206,7 @@ def setup_of(problemdict):
 # main run 
 pos,named = parse_args_any(sys.argv)
 
+# print(len(pos))
 if (len(pos) != 2 ):
     print("Usage: python dex_of <config.dex> --infile foo.stl")
     exit()
