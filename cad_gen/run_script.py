@@ -10,7 +10,7 @@ def main_cad():
     #print('design_points are:',dp,'shape:',dp.shape)
 
     #Importing vessel seed design
-    vessel = Vessel('vessel_t.FCStd') 
+    vessel = Vessel('vessel_c.FCStd') 
     #dp= np.append(np.array([b,D]),ds[i])
     #print('******design point is:******',dp,'dp shape  is:',dp.shape)
 
@@ -19,13 +19,15 @@ def main_cad():
     #d= dp[1]
 
 
-    line_a= dp[0]
-    line_b= dp[1]
-    line_c= dp[2]
+    line_a1= dp[0]
+    line_a2= dp[1]
+    line_b1= dp[2]
+    line_b2= dp[3]
+    line_d1= dp[4]
 
 
     # a_ext=dp[4]
-    # b_ext=dp[5]
+    # b_ext=dp[5]SSSS
     # c_ext=dp[6]
 
     # a=head_a+a_ext # type: ignore
@@ -34,20 +36,36 @@ def main_cad():
 
 
 
-    vessel.set_low_len(line_a)
-    vessel.set_high_len(line_b)
-    vessel.set_medium_len(line_c)
+    vessel.set_low1_len(line_a1)
+    vessel.set_low2_len(line_a2)
+    vessel.set_medium1_len(line_b1)
+    vessel.set_medium2_len(line_b2)
+    vessel.set_bow_len(line_d1)
+    # vessel.set_high1_len(line_c1)
+    # vessel.set_high2_len(line_c2)
 
     ##########
-    hull_line_h=vessel.get_high_details()
-    print('----> hull line high:',hull_line_h)
+    hull_line_l1=vessel.get_low1_details()
+    print('----> hull line low:',hull_line_l1)
+    
+    hull_line_l2=vessel.get_low2_details()
+    print('----> hull line low:',hull_line_l2)
 
-    hull_line_m=vessel.get_medium_details()
-    print('----> hull line medium:',hull_line_m)
 
-    hull_line_l=vessel.get_low_details()
-    print('----> hull line low:',hull_line_l)
+    hull_line_m1=vessel.get_medium1_details()
+    print('----> hull line medium:',hull_line_m1)
+    
+    hull_line_m2=vessel.get_medium2_details()
+    print('----> hull line medium:',hull_line_m2)
 
+
+    # hull_line_h1=vessel.get_high1_details()
+    # print('----> hull line high:',hull_line_h1)
+    # hull_line_h2=vessel.get_high2_details()
+    # print('----> hull line high:',hull_line_h2)
+
+    hull_line_d1=vessel.get_bow_details()
+    print('----> hull line bulbus_bow1:',hull_line_d1)
 
 
     ###Get volume and apped to design point
@@ -66,5 +84,4 @@ def main_cad():
 
 
     vessel.create_stl(1)
-
 # main_cad()

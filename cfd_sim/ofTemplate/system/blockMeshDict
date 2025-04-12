@@ -22,11 +22,11 @@ backgroundMesh
     yMax     8.585050106048584;
     zMin     -16.0;
     zMid1    -1.0;
-    zMid2     0.188;
-    zMid3     0.244;
-    zMid4     0.3;
-    zMid5     1.6;
-    zMax      4.57857608795166;
+    zMid2     0.131;
+    zMid3     0.187;
+    zMid4     0.243;
+    zMid5     1.543;
+    zMax      3.173;
 
     /*xCells   42;
     yCells   19;

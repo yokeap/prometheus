@@ -20,7 +20,8 @@ import random
 from numpy.random import seed
 
 # initial parameters (mm unit)  
-a=0.02856; b=0.03463;c=0.04748; 
+# a1=0.020;a2 =0.020 ;b1 =0.03451 ;b2 =0.04039 ;c1 =0.08421 ;c2 =0.1 ;d1 =0.01 ; 
+a1=0.020;a2 =0.020 ;b1 =0.03451 ;b2 =0.04039 ;d1 =0.85
 # a_ext=0;c_ext=0                                # for exp2 set a_ext & c_ext = 2500 ; It define allowable extension in nose_length & tail legth during optimization. 
 data_file_name='./data_bo/bo_hull.csv'      # data file name- change for each experiment
 data_opt_name = './result_opt.csv'
@@ -35,7 +36,7 @@ src= './cad_gen/stl_repo'
 dst='./cfd_sim/stl_cfd'
 
 # resistance initial
-resistance_storage = [120.0449041] 
+resistance_storage = [22.72] 
 
 def delete_dir(loc):
     print('*Deleted directory:',loc)
@@ -78,12 +79,12 @@ def save_design_points(x):
           
 def run_cad_cfd(x):
     print('shape of x:',x.shape)
-    print(str(x[0][0])+","+str(x[0][1])+","+str(x[0][2]))
+    print(str(x[0][0])+","+str(x[0][1])+","+str(x[0][2])+","+str(x[0][3])+","+str(x[0][4]))
 
     # needs a function for check boundary because x is random which can be extrapolate
     # feasibility =
 
-    save_design_points(np.array([x[0][0],x[0][1],x[0][2]]))
+    save_design_points(np.array([x[0][0],x[0][1],x[0][2],x[0][3],x[0][4]]))
 
     delete_dir(dst)
     # subprocess.call('./cad_gen/run_cad.sh')
@@ -118,13 +119,23 @@ def run_bo(run_id=0,aquistion='EI',seeds=0):
     #         {'name': 'theta', 'type': 'continuous', 'domain': (1,50)},
     #         {'name': 'a_ext', 'type': 'continuous', 'domain': (0,a_ext)},
     #         {'name': 'c_ext', 'type': 'continuous', 'domain': (0,c_ext)}]
-    bounds = [{'name': 'a', 'type': 'continuous', 'domain': (0,0.1)},
-            {'name': 'b', 'type': 'continuous', 'domain': (0,0.1)},
-            {'name': 'c', 'type': 'continuous', 'domain': (0,0.1)},]
+    # bounds = [{'name': 'a1', 'type': 'continuous', 'domain': (0,0.07)},
+    #           {'name': 'a2', 'type': 'continuous', 'domain': (0,0.07)},
+    #           {'name': 'b1', 'type': 'continuous', 'domain': (0,0.1)},
+    #           {'name': 'b2', 'type': 'continuous', 'domain': (0,0.1)},
+    #           {'name': 'c1', 'type': 'continuous', 'domain': (0,0.1)},
+    #           {'name': 'c2', 'type': 'continuous', 'domain': (0,0.1)},
+    #           {'name': 'd1', 'type': 'continuous', 'domain': (0.01,0.05)},]
+    bounds = [{'name': 'a1', 'type': 'continuous', 'domain': (0.02,0.05)},
+              {'name': 'a2', 'type': 'continuous', 'domain': (0.02,0.05)},              
+              {'name': 'b1', 'type': 'continuous', 'domain': (0.034,0.074)},
+              {'name': 'b1', 'type': 'continuous', 'domain': (0.04,0.08)},
+              {'name': 'd1', 'type': 'continuous', 'domain': (0.85,1)},]
+
 
     print('Bound is:',bounds)
     max_time  = None 
-    max_iter  = 50
+    max_iter  =  50
     num_iter=10
     batch= int(max_iter/num_iter)
 	
@@ -173,7 +184,7 @@ def run_bo(run_id=0,aquistion='EI',seeds=0):
         sim_data_x= myBopt2D.X
         myBopt2D.save_evaluations(data_file_name)
 
-    print("Value of (a, b, c) that minimises the resistance : "+str(myBopt2D.x_opt))    
+    print("Value of (a1, a2, b1, b2, d1) that minimises the resistance : "+str(myBopt2D.x_opt))    
     print("Optimum resistance is: " + str(myBopt2D.fx_opt))
 
     myBopt2D.plot_acquisition()  
@@ -187,4 +198,4 @@ if __name__=='__main__':
     aqu2='LCB'
     
     for i in range(len(run)):
-        run_bo(run[i],aqu2,seeds[i]) 
+         run_bo(run[i],aqu2,seeds[i])

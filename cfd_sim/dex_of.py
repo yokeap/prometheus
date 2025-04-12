@@ -89,10 +89,10 @@ def computational_domain(problemdict):
     DomainSizeZBot = float(problemdict['DomainSizeZBottom'])
     zmin = round(-zlength*DomainSizeZBot * 1.0, 3)
     zmax = round((zlength*DomainSizeZTop) * 1.5, 3)
-    zmid5 = round(zmax/1.7, 3)
-    zmid4 = round(0.3, 3)
+    zmid5 = round(zmax, 3)
+    zmid4 = round(0.243, 3)
     # zmid3 = round(zmax / 10.0, 3)
-    zmid3 = round(zmid4 - 0.056, 3)
+    zmid3 = round(0.187, 3)
     # zmid2 = round(zmid3 - 0.05, 3)
     zmid2 = round(zmid3 - 0.056, 3)
     zmid1 = round(-1.0, 3)
@@ -192,7 +192,7 @@ def setup_of(problemdict):
     # First copy the STL File in the right place
     templatesdict={'system/blockMeshDict_templ.txt': 'system/blockMeshDict','system/decomposeParDict_templ.txt': 'system/decomposeParDict',
     'system/snappyHexMeshDict_templ.txt':'system/snappyHexMeshDict', 'system/setFieldsDict_templ.txt':'system/setFieldsDict',
-                   'system/controlDict_templ.txt':'system/controlDict'}
+                   'system/controlDict_templ.txt':'system/controlDict', 'system/topoSetDict_templ.txt':'system/topoSetDict'}
     for key in templatesdict:
         kajiki_it(casefolder+"/"+key,casefolder+"/"+templatesdict[key],problemdict)
     # write input definition json into the casefolder

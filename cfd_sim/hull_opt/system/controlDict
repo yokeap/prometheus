@@ -23,15 +23,15 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         500;
+endTime         600;
 
 deltaT          1;
 
 writeControl    timeStep;
 
-writeInterval   10;
+writeInterval   50;
 
-purgeWrite      1;
+purgeWrite      12;
 
 
 writeFormat     binary;
@@ -56,7 +56,7 @@ functions
         log             on;
         writeControl    timeStep;
         writeInterval   1;
-        CofR            (-3.218957890331839 -8.576400662869751e-06 0.2842540492068857);
+        CofR            (1.7948202132660527 8.395606674340092e-07 0.1545469642376033);
     }
 }
 

@@ -21,7 +21,7 @@ runopenfoam,input,string,yes
 backgroundof,input,string,no
 kOmegaTol,input,continuous,1e-7
 upTol,input,continuous,1e-7
-maxiter,input,discrete,500
+maxiter,input,discrete,600
 ***
 *** Geometry Details
 ***
@@ -58,7 +58,7 @@ density,input,continous,1027.0
 ** X is the flow direction, Y is the lift direction and Z is the span direction.
 ** Inlet is to the front.
 ***
-DomainSizeXFront,input,continuous,2
+DomainSizeXFront,input,continuous,1.2
 DomainSizeXBack,input,continuous,2.5
 DomainSizeYLeft,input,continuous,10
 DomainSizeYRight,input,continuous,15
@@ -71,7 +71,7 @@ cellSizeZ,input,continuous,0.3
 ***
 *** SNAPPY HEX MESH REFINEMENT
 ***
-maxLocalCells,input,discrete,10000
+maxLocalCells,input,discrete,100000
 maxGlobalCells,input,discrete,500000
 nsurfacelayers,input,discrete,3
 **this defines the minimum and maximum cell refinement on the model surface --> refinement level (n m)

@@ -33,6 +33,7 @@ if [[ $2 != *.stl ]]
 
 echo "*** Preprocessing *** "s
 python3 ./dex_of.py $1 --infile $2 
+rm -f stl_cfd/ship_gen.stl
 cd ./hull_opt
 pwd
 echo "*** Cleaning and Running OF ***"
