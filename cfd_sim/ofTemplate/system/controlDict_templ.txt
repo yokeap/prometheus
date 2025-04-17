@@ -1,22 +1,20 @@
 /*--------------------------------*- C++ -*----------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  12
-     \\/     M anipulation  |
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
+    version     2.0;
     format      ascii;
     class       dictionary;
-    location    "system";
     object      controlDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     foamRun;
-
-solver          incompressibleVoF;
+application     interFoam;
 
 startFrom       startTime;
 
@@ -32,8 +30,7 @@ writeControl    timeStep;
 
 writeInterval   50;
 
-purgeWrite      12;
-
+purgeWrite      0;
 
 writeFormat     binary;
 
@@ -52,13 +49,15 @@ functions
     forces
     {
         type            forces;
-        libs            ("libforces.so");
+        libs            (forces);
         patches         (hull);
+        rhoInf          998.8;
         log             on;
         writeControl    timeStep;
         writeInterval   1;
         CofR            ($cog);
     }
 }
+
 
 // ************************************************************************* //

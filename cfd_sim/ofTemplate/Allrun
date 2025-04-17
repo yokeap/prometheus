@@ -1,21 +1,42 @@
 #!/bin/sh
-cd ${0%/*} || exit 1    # Run from this directory
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
 
-# Source tutorial run functions
-. $WM_PROJECT_DIR/bin/tools/RunFunctions
+# mkdir -p constant/triSurface
 
-# Mesh if necessary
-# if ! cloneMesh ../DTCHullMoving . && ! (isTest $@ && cloneMesh ../DTCHullWave .)
-# then
-#    ./Allmesh
-# fi
-./Allmesh
+# copy DTC hull surface from resources folder
+# cp -f \
+#     "$FOAM_TUTORIALS"/resources/geometry/DTC-scaled.stl.gz \
+#     constant/triSurface/
+
+runApplication surfaceFeatureExtract
+
+runApplication blockMesh
+
+for i in 1 2 3 4 5 6
+do
+    runApplication -s "$i" \
+        topoSet -dict system/topoSetDict.${i}
+
+    runApplication -s "$i" \
+        refineMesh -dict system/refineMeshDict -overwrite
+done
+
+runApplication snappyHexMesh -overwrite
+
+restore0Dir
+
 runApplication setFields
 
-runApplication decomposePar
+# runApplication decomposePar
+runParallel -s decompose redistributePar -decompose
+
+runParallel renumberMesh -overwrite
 
 runParallel $(getApplication)
 
-runApplication reconstructPar
+# runApplication reconstructPar
+runParallel -s reconstruct redistributePar -reconstruct
 
 #------------------------------------------------------------------------------

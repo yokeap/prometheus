@@ -77,7 +77,9 @@ def computational_domain(problemdict):
     DomainSizeXFront = float(problemdict['DomainSizeXFront'])
     DomainSizeXBack = float(problemdict['DomainSizeXBack'])
     xmin = round(-xlength*DomainSizeXBack, 3)
-    xmax = round(xlength*DomainSizeXFront, 3)
+    # xmax = round(xlength*DomainSizeXFront, 3)
+    xmax = round(xlength, 3)
+    x_tpd5 = xmax + 0.25
     #
     DomainSizeYLeft= float(problemdict['DomainSizeYLeft'])
     DomainSizeYRight = float(problemdict['DomainSizeYRight'])
@@ -88,14 +90,20 @@ def computational_domain(problemdict):
     DomainSizeZTop = float(problemdict['DomainSizeZTop'])
     DomainSizeZBot = float(problemdict['DomainSizeZBottom'])
     zmin = round(-zlength*DomainSizeZBot * 1.0, 3)
-    zmax = round((zlength*DomainSizeZTop) * 1.5, 3)
-    zmid5 = round(zmax, 3)
-    zmid4 = round(0.243, 3)
+    zmax = round(zlength*DomainSizeZTop, 3)
+    zmid3 = round(float(problemdict['Draft']), 3)
+    zmid2 = round(zmid3 - (zmid3 / 4), 3)
+    zmid4 = round(zmid3 + (zmid3 / 4), 3)
     # zmid3 = round(zmax / 10.0, 3)
-    zmid3 = round(0.187, 3)
     # zmid2 = round(zmid3 - 0.05, 3)
-    zmid2 = round(zmid3 - 0.056, 3)
+    # zmid2 = round(zmid3 - 0.056, 3)
     zmid1 = round(-1.0, 3)
+    
+    # zmid2 = 0.188
+    # zmid3 = 0.244
+    # zmid4 = 0.3
+    zmid5 = zmax
+
 
     # set up domain grid
     nxgrid = int((xmax-xmin)/float(problemdict['cellSizeX']))
@@ -124,7 +132,7 @@ def computational_domain(problemdict):
     ylocinside = 0
     zlocinside = 0
 
-    return {'xmin':xmin, 'xmax':xmax,
+    return {'xmin':xmin, 'xmax':xmax, 'x_tpd5':x_tpd5,
             'ymin':ymin,'ymax':ymax,'zmin':zmin,'zmax':zmax,
             'zmid1':zmid1, 'zmid2':zmid2, 'zmid3':zmid3, 'zmid4':zmid4, 'zmid5':zmid5,
             'nxgrid':nxgrid,'nygrid':nygrid,'nzgrid':nzgrid,
@@ -163,7 +171,11 @@ def stlPrep(configdict):
     cog = ' '.join(map(str, cog))
 
     # save the mesh
-    your_mesh.save(outfile, mode=stl.Mode.ASCII)
+    # your_mesh.save(outfile, mode=stl.Mode.ASCII)
+    
+    meshcpycmd = 'cp -r ' + 'stl_cfd/ship_gen.stl ' + 'stl_cfd/ship.stl'
+    
+    os.system(meshcpycmd)
 
     outdict.update({'outfile':outfile,'volume':volume,
         'cog':cog,'inertia':inertia,'boundingbox':bbox})
@@ -187,12 +199,14 @@ def setup_of(problemdict):
     os.system(ofcopycmd)
     # move stl file into the casefolder
     outfile = problemdict['current_dir']+"/"+problemdict['outfile']
-    stlmovecmd = 'cp '+outfile+' ' + casefolder+'/constant/geometry/ship.stl'
+    stlmovecmd = 'cp '+outfile+' ' + casefolder+'/constant/triSurface/ship.stl'
     os.system(stlmovecmd)
     # First copy the STL File in the right place
     templatesdict={'system/blockMeshDict_templ.txt': 'system/blockMeshDict','system/decomposeParDict_templ.txt': 'system/decomposeParDict',
     'system/snappyHexMeshDict_templ.txt':'system/snappyHexMeshDict', 'system/setFieldsDict_templ.txt':'system/setFieldsDict',
-                   'system/controlDict_templ.txt':'system/controlDict', 'system/topoSetDict_templ.txt':'system/topoSetDict'}
+    'system/controlDict_templ.txt':'system/controlDict', 'system/topoSetDict.1_templ.txt':'system/topoSetDict.1', 'system/topoSetDict.2_templ.txt':'system/topoSetDict.2',
+    'system/topoSetDict.3_templ.txt':'system/topoSetDict.3', 'system/topoSetDict.4_templ.txt':'system/topoSetDict.4', 'system/topoSetDict.5_templ.txt':'system/topoSetDict.5',
+    'system/topoSetDict.6_templ.txt':'system/topoSetDict.6', 'constant/hRef_templ.txt':'constant/hRef'}
     for key in templatesdict:
         kajiki_it(casefolder+"/"+key,casefolder+"/"+templatesdict[key],problemdict)
     # write input definition json into the casefolder

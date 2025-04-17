@@ -1,17 +1,17 @@
 /*--------------------------------*- C++ -*----------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  11
-     \\/     M anipulation  |
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
+    version     2.0;
     format      ascii;
     class       dictionary;
     object      snappyHexMeshDict;
 }
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 // Which of the steps to run
@@ -28,18 +28,17 @@ addLayers       true;
 // - to 'snap' the mesh boundary to the surface
 geometry
 {
-    hull
+    DTC-scaled.stl
     {
         type triSurfaceMesh;
-        file "ship.stl";
+        name hull;
 
         patchInfo
         {
             type wall;
         }
     }
-};
-
+}
 
 
 // Settings for the castellatedMesh generation.
@@ -59,7 +58,7 @@ castellatedMeshControls
     // Note that this is the number of cells before removing the part which
     // is not 'visible' from the keepPoint. The final number of cells might
     // actually be a lot less.
-    maxGlobalCells 500000;
+    maxGlobalCells 2000000;
 
     // The surface refinement loop might spend lots of iterations refining just a
     // few cells. This setting will cause refinement to stop if <= minimumRefine
@@ -78,11 +77,11 @@ castellatedMeshControls
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     // Specifies a level for any cell intersected by its edges.
-    // This is a featureEdgeMesh, read from constant/geometry for now.
+    // This is a featureEdgeMesh, read from constant/triSurface for now.
     features
     (
          {
-             file "ship.eMesh";
+             file "DTC-scaled.eMesh";
              level 0;
          }
     );
@@ -110,15 +109,33 @@ castellatedMeshControls
     resolveFeatureAngle 45;
 
 
+    // Region-wise refinement
+    // ~~~~~~~~~~~~~~~~~~~~~~
+
+    // Specifies refinement level for cells in relation to a surface. One of
+    // three modes
+    // - distance. 'levels' specifies per distance to the surface the
+    //   wanted refinement level. The distances need to be specified in
+    //   descending order.
+    // - inside. 'levels' is only one entry and only the level is used. All
+    //   cells inside the surface get refined up to the level. The surface
+    //   needs to be closed for this to be possible.
+    // - outside. Same but cells outside.
+
+    refinementRegions
+    {
+    }
+
+
     // Mesh selection
     // ~~~~~~~~~~~~~~
 
     // After refinement patches get added for all refinementSurfaces and
     // all cells intersecting the surfaces get put into these patches. The
-    // section reachable from the insidePoint is kept.
+    // section reachable from the locationInMesh is kept.
     // NOTE: This point should never be on a face, always inside a cell, even
     // after refinement.
-    insidePoint (-0.7 0 0);
+    locationInMesh (-0.7 0 0);
 
 
     // Whether any faceZones (as specified in the refinementSurfaces)
@@ -189,7 +206,7 @@ addLayersControls
     // If points get not extruded do nGrow layers of connected faces that are
     // also not grown. This helps convergence of the layer addition process
     // close to features.
-    // Note: changed(corrected) w.r.t 17x! (didn't do anything in 17x)
+    // Note: changed(corrected) w.r.t 1.7.x! (didn't do anything in 1.7.x)
     nGrow 0;
 
 
@@ -220,8 +237,9 @@ addLayersControls
     maxThicknessToMedialRatio 0.3;
 
     // Angle used to pick up medial axis points
-    // Note: changed(corrected) w.r.t 17x! 90 degrees corresponds to 130 in 17x.
-    minMedianAxisAngle 90;
+    // Note: changed(corrected) w.r.t 1.7.x! 90 degrees corresponds to 130
+    // in 1.7.x.
+    minMedialAxisAngle 90;
 
     // Create buffer region for new layer terminations
     nBufferCellsNoExtrude 0;
@@ -260,7 +278,7 @@ debug 0;
 
 // Merge tolerance. Is fraction of overall bounding box of initial mesh.
 // Note: the write tolerance needs to be higher than this.
-mergeTolerance 1e-6;
+mergeTolerance 1E-6;
 
 
 // ************************************************************************* //

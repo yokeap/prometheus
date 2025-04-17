@@ -1,17 +1,17 @@
 /*--------------------------------*- C++ -*----------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  12
-     \\/     M anipulation  |
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
+    version     2.0;
     format      ascii;
     class       dictionary;
     object      snappyHexMeshDict;
 }
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 // Which of the steps to run
@@ -28,18 +28,18 @@ addLayers       true;
 // - to 'snap' the mesh boundary to the surface
 geometry
 {
-    hull
+    ship.stl
     {
         type triSurfaceMesh;
-        file "ship.stl";
+        name hull;
 
         patchInfo
         {
             type wall;
         }
     }
-
 }
+
 
 // Settings for the castellatedMesh generation.
 castellatedMeshControls
@@ -60,17 +60,17 @@ castellatedMeshControls
     // actually be a lot less.
     maxGlobalCells $maxGlobalCells;
 
-    // The surface refinement loop might spend lots of iterations refining just
-    // a few cells. This setting will cause refinement to stop if <=
-    // minimumRefine are selected for refinement. Note: it will at least do one
-    // iteration (unless the number of cells to refine is 0)
+    // The surface refinement loop might spend lots of iterations refining just a
+    // few cells. This setting will cause refinement to stop if <= minimumRefine
+    // are selected for refinement. Note: it will at least do one iteration
+    // (unless the number of cells to refine is 0)
     minRefinementCells 0;
 
     // Number of buffer layers between different levels.
     // 1 means normal 2:1 refinement restriction, larger means slower
     // refinement.
-    //nCellsBetweenLevels 4;
     nCellsBetweenLevels 3;
+
 
 
     // Explicit feature edge refinement
@@ -79,12 +79,12 @@ castellatedMeshControls
     // Specifies a level for any cell intersected by its edges.
     // This is a featureEdgeMesh, read from constant/triSurface for now.
     features
-	(
-		{
-			file "ship.eMesh";
-			level 0;
-		}
-	);
+    (
+         {
+             file "ship.eMesh";
+             level 0;
+         }
+    );
 
 
 
@@ -102,12 +102,10 @@ castellatedMeshControls
         hull
         {
             // Surface-wise min and max refinement level
-            //level $refinementLevel;
             level (0 0);
         }
     }
 
-    // Resolve sharp angles on fridges
     resolveFeatureAngle 45;
 
 
@@ -124,14 +122,9 @@ castellatedMeshControls
     //   needs to be closed for this to be possible.
     // - outside. Same but cells outside.
 
-    /*refinementRegions
+    refinementRegions
     {
-        refinementBox
-        {
-            mode inside;
-            levels ((1e15 2));
-        }
-    }*/
+    }
 
 
     // Mesh selection
@@ -142,8 +135,7 @@ castellatedMeshControls
     // section reachable from the locationInMesh is kept.
     // NOTE: This point should never be on a face, always inside a cell, even
     // after refinement.
-    // locationInMesh ($xlocinside $ylocinside $zlocinside);
-    insidePoint ($xlocinside $ylocinside $zlocinside);
+    locationInMesh (-0.7 0 0);
 
 
     // Whether any faceZones (as specified in the refinementSurfaces)
@@ -164,6 +156,7 @@ snapControls
     //- Relative distance for points to be attracted by surface feature point
     //  or edge. True distance is this factor times local
     //  maximum edge length.
+    //    tolerance 4.0;
     tolerance 1.0;
 
     //- Number of mesh displacement relaxation iterations.
@@ -173,7 +166,7 @@ snapControls
     //  before upon reaching a correct mesh.
     nRelaxIter 5;
 
-	nFeatureSnapIter 10;
+    nFeatureSnapIter 10;
 }
 
 
@@ -191,11 +184,13 @@ addLayersControls
         hull
         {
             nSurfaceLayers $nsurfacelayers;
+
         }
     }
 
     // Expansion factor for layer mesh
     expansionRatio 1.5;
+
 
     // Wanted thickness of final added cell layer. If multiple layers
     // is the thickness of the layer furthest away from the wall.
@@ -205,7 +200,6 @@ addLayersControls
 
     // Minimum thickness of cell layer. If for any reason layer
     // cannot be above minThickness do not add layer.
-    // Relative to undistorted size of cell outside layer.
     // See relativeSizes parameter.
     minThickness 0.25;
 
@@ -215,15 +209,12 @@ addLayersControls
     // Note: changed(corrected) w.r.t 1.7.x! (didn't do anything in 1.7.x)
     nGrow 0;
 
+
     // Advanced settings
 
     // When not to extrude surface. 0 is flat surface, 90 is when two faces
     // are perpendicular
     featureAngle 60;
-
-    // At non-patched sides allow mesh to slip if extrusion direction makes
-    // angle larger than slipFeatureAngle. Default is 0.5*featureAngle.
-    // slipFeatureAngle 30;
 
     // Maximum number of snapping relaxation iterations. Should stop
     // before upon reaching a correct mesh.
@@ -246,7 +237,8 @@ addLayersControls
     maxThicknessToMedialRatio 0.3;
 
     // Angle used to pick up medial axis points
-    // Note: changed(corrected) w.r.t 16x! 90 degrees corresponds to 130 in 16x.
+    // Note: changed(corrected) w.r.t 1.7.x! 90 degrees corresponds to 130
+    // in 1.7.x.
     minMedialAxisAngle 90;
 
     // Create buffer region for new layer terminations
@@ -283,9 +275,10 @@ meshQualityControls
 // 4 : write current intersections as .obj files
 debug 0;
 
+
 // Merge tolerance. Is fraction of overall bounding box of initial mesh.
 // Note: the write tolerance needs to be higher than this.
-mergeTolerance 1e-6;
+mergeTolerance 1E-6;
 
 
 // ************************************************************************* //

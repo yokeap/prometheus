@@ -1,15 +1,15 @@
 /*--------------------------------*- C++ -*----------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  12
-     \\/     M anipulation  |
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
+    version     2.0;
     format      ascii;
     class       dictionary;
-    location    "system";
     object      fvSchemes;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -28,7 +28,8 @@ gradSchemes
 divSchemes
 {
     div(rhoPhi,U)   Gauss linearUpwind grad(U);
-    div(phi,alpha)  Gauss interfaceCompression vanLeer 1;
+    div(phi,alpha)  Gauss vanLeer;
+    div(phirb,alpha) Gauss linear;
     div(phi,k)      Gauss linearUpwind limitedGrad;
     div(phi,omega)  Gauss linearUpwind limitedGrad;
     div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
@@ -51,7 +52,7 @@ snGradSchemes
 
 wallDist
 {
-    method meshWave;
+    method          meshWave;
 }
 
 
