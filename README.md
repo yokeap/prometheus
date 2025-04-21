@@ -15,7 +15,7 @@ sudo ln -s /usr/share/freecad/Mod /usr/lib/freecad-python3/Mod
 ### Dependencies
 
 * Freecad 0.21.2
-    * Initial Releasewith Curveworkbench
+    * Curveworkbench
 * OpenFoam 2412
 
 ### Installing
