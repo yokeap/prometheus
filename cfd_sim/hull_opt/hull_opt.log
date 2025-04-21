@@ -18,3 +18,4 @@ Running setFields on /media/yokeap/Series/simulation/prometheus/cfd_sim/hull_opt
 Running redistributePar (8 processes) on /media/yokeap/Series/simulation/prometheus/cfd_sim/hull_opt 
 Running renumberMesh (8 processes) on /media/yokeap/Series/simulation/prometheus/cfd_sim/hull_opt 
 Running interFoam (8 processes) on /media/yokeap/Series/simulation/prometheus/cfd_sim/hull_opt 
+Running redistributePar (8 processes) on /media/yokeap/Series/simulation/prometheus/cfd_sim/hull_opt 

@@ -45,8 +45,8 @@ subdomains,input,discrete,8
 ***
 *** Flow Characteristics
 ***
-**Umean,input,continuous,1.851
-**mUmean,input,continuous,-1.851
+**Umean,input,continuous,1.6404
+**mUmean,input,continuous,-1.6404
 kinematic_viscosity,input,continuous,1.736124635e-6
 density,input,continous,1027.0
 *** Turbulence parameters (these parameters are optional and will be estimated if not given)
@@ -74,7 +74,7 @@ cellSizeZ,input,continuous,0.3
 *** SNAPPY HEX MESH REFINEMENT
 ***
 maxLocalCells,input,discrete,100000
-maxGlobalCells,input,discrete,100000
+maxGlobalCells,input,discrete,2000000
 nsurfacelayers,input,discrete,3
 **this defines the minimum and maximum cell refinement on the model surface --> refinement level (n m)
 **results in a maximum cell size of cellSize/2^n and a minimum cell size of cellSize/2^m on the
